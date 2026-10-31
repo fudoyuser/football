@@ -15,7 +15,12 @@ const PLAYER_PHOTOS = {
   "kerkez": {"artist": "Timmy96", "license": "CC0", "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en", "source": "https://commons.wikimedia.org/wiki/File:Milos_Kerkez_04012026_(1).jpg"},
   "barcola": {"artist": "Bryan Berlin", "license": "CC BY-SA 4.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0", "source": "https://commons.wikimedia.org/wiki/File:Bradley_Barcola_France_v_Norway_26_June_26-033_(cropped).jpg"},
   "jones": {"artist": "Timmy96", "license": "CC0", "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en", "source": "https://commons.wikimedia.org/wiki/File:Curtis_Jones_06042025_(1).jpg"},
-  "chiesa": {"artist": "Timmy96", "license": "CC0", "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en", "source": "https://commons.wikimedia.org/wiki/File:Federico_Chiesa_04012026_(1).jpg"}
+  "chiesa": {"artist": "Timmy96", "license": "CC0", "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en", "source": "https://commons.wikimedia.org/wiki/File:Federico_Chiesa_04012026_(1).jpg"},
+  "mamardashvili": {"artist": "Timmy96", "license": "CC0", "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en", "source": "https://commons.wikimedia.org/wiki/File:Giorgi_Mamardashvili_04012026_(1).jpg"},
+  "woodman": {"artist": "Timmy96", "license": "CC0", "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en", "source": "https://commons.wikimedia.org/wiki/File:Freddie_Woodman_04012026_(1).jpg"},
+  "jaros": {"artist": "Timmy96", "license": "CC0", "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en", "source": "https://commons.wikimedia.org/wiki/File:V%C3%ADt%C4%9Bzslav_Jaro%C5%A1_06042025_(1)_(cropped).jpg"},
+  "davies": {"artist": "Timmy96", "license": "CC0", "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en", "source": "https://commons.wikimedia.org/wiki/File:Harvey_Davies_06042025_(1).jpg"},
+  "gomez": {"artist": "Timmy96", "license": "CC0", "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en", "source": "https://commons.wikimedia.org/wiki/File:Joe_Gomez_04012026_(1).jpg"}
 };
 
 // Câu có ảnh khi đã có thông tin nguồn ảnh; chưa có thì dùng card silhouette
