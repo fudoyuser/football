@@ -18,6 +18,9 @@ const PLAYER_PHOTOS = {
   "chiesa": {"artist": "Timmy96", "license": "CC0", "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en", "source": "https://commons.wikimedia.org/wiki/File:Federico_Chiesa_04012026_(1).jpg"}
 };
 
+// Câu có ảnh khi đã có thông tin nguồn ảnh; chưa có thì dùng card silhouette
+const hasPhoto = (q) => Boolean(q.photo && PLAYER_PHOTOS[q.photo]);
+
 const photoSrc = (slug) => `images/players/${slug}.jpg`;
 
 // Tải trước ảnh để lúc chuyển câu không bị giật

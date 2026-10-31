@@ -19,19 +19,19 @@
     <section id="screen-home" class="screen card">
       <div class="hero-icon" id="hero-icon"></div>
       <h1>Bạn hiểu The Reds đến đâu?</h1>
-      <p class="lead">Thử sức với 30 câu hỏi về lịch sử, danh hiệu và đội hình hiện tại của Liverpool FC. Mỗi câu có giải thích ngay sau khi trả lời.</p>
+      <p class="lead">Thử sức với <span id="total-count">47</span> câu hỏi về lịch sử, danh hiệu và đội hình hiện tại của Liverpool FC. Mỗi câu có giải thích ngay sau khi trả lời.</p>
       <div class="modes">
         <button class="mode-btn" data-mode="history">
           <strong>Lịch sử &amp; Danh hiệu CLB</strong>
           <span>15 câu</span>
         </button>
         <button class="mode-btn" data-mode="player">
-          <strong>Cầu thủ hiện tại (2026/27)</strong>
-          <span>15 câu</span>
+          <strong>Đội hình hiện tại (2026/27)</strong>
+          <span>32 câu</span>
         </button>
         <button class="mode-btn mode-btn--primary" data-mode="all">
           <strong>Tổng hợp</strong>
-          <span>Tất cả 30 câu</span>
+          <span>Tất cả 47 câu</span>
         </button>
       </div>
       <p class="footnote">YNWA ❤️</p>
@@ -47,6 +47,7 @@
         <div class="progress__bar" id="progress-bar"></div>
       </div>
       <div class="q-illustration" id="q-illustration"></div>
+      <p class="q-position" id="q-position" hidden></p>
       <span class="q-tag" id="q-tag"></span>
       <h2 class="q-text" id="q-text"></h2>
       <div class="options" id="options"></div>

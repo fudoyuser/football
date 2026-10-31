@@ -31,7 +31,7 @@
     state.mode = mode;
     const pool = mode === "all" ? QUESTIONS : QUESTIONS.filter((q) => q.category === mode);
     state.questions = shuffle(pool).map(prepareQuestion);
-    state.questions.forEach((q) => q.photo && preloadPlayerPhoto(q.photo)); // tải trước ảnh cầu thủ
+    state.questions.forEach((q) => hasPhoto(q) && preloadPlayerPhoto(q.photo)); // tải trước ảnh cầu thủ
     state.index = 0;
     state.score = 0;
     show("quiz");
@@ -48,7 +48,8 @@
     $("progress-bar").style.width = `${(state.index / total) * 100}%`;
     $("q-illustration").classList.remove("has-photo");
     $("q-illustration").innerHTML = getIllustration(q);
-    if (q.photo && !q.hidePhotoUntilAnswered) showPhoto(q);
+    if (hasPhoto(q) && !q.hidePhotoUntilAnswered) showPhoto(q);
+    renderPosition(q, false);
     $("q-tag").textContent = CATEGORY_LABEL[q.category];
     $("q-text").textContent = q.question;
     $("feedback").hidden = true;
@@ -77,6 +78,16 @@
     }));
   }
 
+  // Nhãn vị trí thi đấu dưới ảnh; hiện "?" nếu câu hỏi đang hỏi chính vị trí đó
+  function renderPosition(q, revealed) {
+    const el = $("q-position");
+    el.hidden = !q.position;
+    if (!q.position) return;
+    const shown = revealed || !q.hidePositionUntilAnswered;
+    el.innerHTML = `${positionBadge(q.iconType.slice(7))}<span>Vị trí: <strong></strong></span>`;
+    el.querySelector("strong").textContent = shown ? q.position : "?";
+  }
+
   function revealNumber(q) {
     if (q.category !== "player") return;
     const num = $("q-illustration").querySelector(".photo-card__num");
@@ -89,7 +100,8 @@
     state.answered = true;
     const q = state.questions[state.index];
     revealNumber(q);
-    if (q.photo && q.hidePhotoUntilAnswered) showPhoto(q);
+    renderPosition(q, true);
+    if (hasPhoto(q) && q.hidePhotoUntilAnswered) showPhoto(q);
     const correct = i === q.answer;
     if (correct) state.score++;
 
@@ -153,6 +165,13 @@
     if (!state.answered && idx >= 0 && idx < 4) choose(idx);
     else if (state.answered && e.key === "Enter" && document.activeElement !== $("btn-next")) next();
   });
+
+  // Số câu mỗi chủ đề lấy từ ngân hàng câu hỏi
+  const count = (cat) => QUESTIONS.filter((q) => q.category === cat).length;
+  document.querySelector('[data-mode="history"] span').textContent = `${count("history")} câu`;
+  document.querySelector('[data-mode="player"] span').textContent = `${count("player")} câu`;
+  document.querySelector('[data-mode="all"] span').textContent = `Tất cả ${QUESTIONS.length} câu`;
+  $("total-count").textContent = QUESTIONS.length;
 
   $("hero-icon").innerHTML = HISTORY_ICONS.crest;
 })();
