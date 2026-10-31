@@ -7,7 +7,7 @@ Website quiz tương tác về Liverpool FC — 30 câu hỏi về **lịch sử
 - Thứ tự câu hỏi và 4 đáp án được xáo trộn mỗi lần chơi
 - Hiện ngay đúng/sai kèm giải thích, progress bar, màn hình kết quả
 - Câu lịch sử minh họa bằng icon SVG tự vẽ
-- Câu cầu thủ hiển thị ảnh cầu thủ lấy trực tiếp từ Wikipedia (ảnh giấy phép tự do trên Wikimedia Commons, có ghi tác giả + giấy phép); nếu không tải được sẽ dùng card silhouette SVG. Số áo chỉ hiện sau khi trả lời để không lộ đáp án
+- Câu cầu thủ hiển thị ảnh cầu thủ lưu sẵn trong repo (`images/players/`, cắt từ ảnh giấy phép tự do trên Wikimedia Commons, ghi tác giả + giấy phép dưới mỗi ảnh — xem [CREDITS.md](CREDITS.md)); nếu ảnh lỗi sẽ dùng card silhouette SVG. Số áo chỉ hiện sau khi trả lời để không lộ đáp án
 - Responsive, hỗ trợ phím tắt (1–4 / A–D để chọn, Enter để sang câu)
 
 ## Công nghệ
@@ -20,7 +20,9 @@ HTML + CSS + JavaScript thuần, không framework, không build step — deploy 
 | `style.css` | Giao diện theme đỏ-trắng (#C8102E) |
 | `questions.js` | Ngân hàng 30 câu hỏi |
 | `icons.js` | Icon SVG lịch sử + card cầu thủ |
-| `photos.js` | Tải ảnh cầu thủ + thông tin bản quyền từ Wikipedia API |
+| `photos.js` | Thông tin bản quyền + hiển thị ảnh cầu thủ |
+| `images/players/` | 15 ảnh cầu thủ 400×500 |
+| `CREDITS.md` | Nguồn, tác giả, giấy phép từng ảnh |
 | `app.js` | Logic quiz |
 
 ## Chạy local
@@ -29,6 +31,6 @@ Mở `index.html` bằng trình duyệt, hoặc:
 python3 -m http.server 8000
 ```
 
-> Ảnh cầu thủ thuộc về các tác giả tương ứng, sử dụng theo giấy phép ghi dưới mỗi ảnh.
+> Ảnh cầu thủ thuộc về các tác giả tương ứng, sử dụng theo giấy phép ghi trong [CREDITS.md](CREDITS.md).
 >
 > Dự án fan-made, không liên kết chính thức với Liverpool FC.

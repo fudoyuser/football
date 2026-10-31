@@ -31,7 +31,7 @@
     state.mode = mode;
     const pool = mode === "all" ? QUESTIONS : QUESTIONS.filter((q) => q.category === mode);
     state.questions = shuffle(pool).map(prepareQuestion);
-    state.questions.forEach((q) => q.wiki && loadPlayerPhoto(q.wiki)); // tải trước ảnh cầu thủ
+    state.questions.forEach((q) => q.photo && preloadPlayerPhoto(q.photo)); // tải trước ảnh cầu thủ
     state.index = 0;
     state.score = 0;
     show("quiz");
@@ -48,7 +48,7 @@
     $("progress-bar").style.width = `${(state.index / total) * 100}%`;
     $("q-illustration").classList.remove("has-photo");
     $("q-illustration").innerHTML = getIllustration(q);
-    if (q.wiki && !q.hidePhotoUntilAnswered) showPhoto(q);
+    if (q.photo && !q.hidePhotoUntilAnswered) showPhoto(q);
     $("q-tag").textContent = CATEGORY_LABEL[q.category];
     $("q-text").textContent = q.question;
     $("feedback").hidden = true;
@@ -66,14 +66,15 @@
     });
   }
 
-  // Thay card silhouette bằng ảnh thật khi tải xong (nếu người chơi vẫn ở câu đó)
+  // Hiện ảnh cầu thủ; nếu ảnh lỗi thì giữ card silhouette SVG
   function showPhoto(q) {
-    loadPlayerPhoto(q.wiki).then((photo) => {
-      if (!photo || state.questions[state.index] !== q) return;
-      const box = $("q-illustration");
-      box.classList.add("has-photo");
-      box.replaceChildren(playerPhotoCard(q, photo, state.answered));
-    });
+    const box = $("q-illustration");
+    box.classList.add("has-photo");
+    box.replaceChildren(playerPhotoCard(q, state.answered, () => {
+      if (state.questions[state.index] !== q) return;
+      box.classList.remove("has-photo");
+      box.innerHTML = getIllustration(q, state.answered);
+    }));
   }
 
   function revealNumber(q) {
@@ -88,7 +89,7 @@
     state.answered = true;
     const q = state.questions[state.index];
     revealNumber(q);
-    if (q.wiki && q.hidePhotoUntilAnswered) showPhoto(q);
+    if (q.photo && q.hidePhotoUntilAnswered) showPhoto(q);
     const correct = i === q.answer;
     if (correct) state.score++;
 
