@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Liverpool FC Quiz</title>
+  <meta name="description" content="Quiz tương tác về lịch sử, danh hiệu và cầu thủ Liverpool FC.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M15 10h70v40q0 35-35 45Q15 85 15 50z' fill='%23C8102E'/></svg>">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <span class="topbar__crest" aria-hidden="true"></span>
+    <span class="topbar__title">Liverpool FC Quiz</span>
+  </header>
+
+  <main class="container">
+    <!-- Trang chủ -->
+    <section id="screen-home" class="screen card">
+      <div class="hero-icon" id="hero-icon"></div>
+      <h1>Bạn hiểu The Reds đến đâu?</h1>
+      <p class="lead">Thử sức với 30 câu hỏi về lịch sử, danh hiệu và đội hình hiện tại của Liverpool FC. Mỗi câu có giải thích ngay sau khi trả lời.</p>
+      <div class="modes">
+        <button class="mode-btn" data-mode="history">
+          <strong>Lịch sử &amp; Danh hiệu CLB</strong>
+          <span>15 câu</span>
+        </button>
+        <button class="mode-btn" data-mode="player">
+          <strong>Cầu thủ hiện tại (2026/27)</strong>
+          <span>15 câu</span>
+        </button>
+        <button class="mode-btn mode-btn--primary" data-mode="all">
+          <strong>Tổng hợp</strong>
+          <span>Tất cả 30 câu</span>
+        </button>
+      </div>
+      <p class="footnote">YNWA ❤️</p>
+    </section>
+
+    <!-- Màn hình quiz -->
+    <section id="screen-quiz" class="screen card" hidden>
+      <div class="quiz-head">
+        <span id="progress-text">Câu 1/30</span>
+        <span id="score-text">Điểm: 0</span>
+      </div>
+      <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+        <div class="progress__bar" id="progress-bar"></div>
+      </div>
+      <div class="q-illustration" id="q-illustration"></div>
+      <span class="q-tag" id="q-tag"></span>
+      <h2 class="q-text" id="q-text"></h2>
+      <div class="options" id="options"></div>
+      <div class="feedback" id="feedback" hidden>
+        <p class="feedback__verdict" id="feedback-verdict"></p>
+        <p class="feedback__explain" id="feedback-explain"></p>
+      </div>
+      <div class="quiz-actions">
+        <button class="link-btn" id="btn-quit">← Về trang chủ</button>
+        <button class="btn" id="btn-next" hidden>Câu tiếp theo →</button>
+      </div>
+    </section>
+
+    <!-- Màn hình kết quả -->
+    <section id="screen-result" class="screen card" hidden>
+      <div class="hero-icon" id="result-icon"></div>
+      <h1>Kết quả</h1>
+      <p class="score-big"><span id="result-score">0</span><small>/<span id="result-total">30</span></small></p>
+      <p class="result-msg" id="result-msg"></p>
+      <div class="stats">
+        <div class="stat stat--ok"><strong id="result-correct">0</strong><span>Câu đúng</span></div>
+        <div class="stat stat--bad"><strong id="result-wrong">0</strong><span>Câu sai</span></div>
+      </div>
+      <div class="result-actions">
+        <button class="btn" id="btn-retry">Làm lại</button>
+        <button class="btn btn--ghost" id="btn-home">Chọn chủ đề khác</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">Dự án fan-made, không liên kết chính thức với Liverpool FC.</footer>
+
+  <script src="questions.js"></script>
+  <script src="icons.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
