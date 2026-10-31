@@ -31,6 +31,7 @@
     state.mode = mode;
     const pool = mode === "all" ? QUESTIONS : QUESTIONS.filter((q) => q.category === mode);
     state.questions = shuffle(pool).map(prepareQuestion);
+    state.questions.forEach((q) => q.wiki && loadPlayerPhoto(q.wiki)); // tải trước ảnh cầu thủ
     state.index = 0;
     state.score = 0;
     show("quiz");
@@ -45,7 +46,9 @@
     $("progress-text").textContent = `Câu ${state.index + 1}/${total}`;
     $("score-text").textContent = `Điểm: ${state.score}`;
     $("progress-bar").style.width = `${(state.index / total) * 100}%`;
+    $("q-illustration").classList.remove("has-photo");
     $("q-illustration").innerHTML = getIllustration(q);
+    if (q.wiki && !q.hidePhotoUntilAnswered) showPhoto(q);
     $("q-tag").textContent = CATEGORY_LABEL[q.category];
     $("q-text").textContent = q.question;
     $("feedback").hidden = true;
@@ -63,10 +66,29 @@
     });
   }
 
+  // Thay card silhouette bằng ảnh thật khi tải xong (nếu người chơi vẫn ở câu đó)
+  function showPhoto(q) {
+    loadPlayerPhoto(q.wiki).then((photo) => {
+      if (!photo || state.questions[state.index] !== q) return;
+      const box = $("q-illustration");
+      box.classList.add("has-photo");
+      box.replaceChildren(playerPhotoCard(q, photo, state.answered));
+    });
+  }
+
+  function revealNumber(q) {
+    if (q.category !== "player") return;
+    const num = $("q-illustration").querySelector(".photo-card__num");
+    if (num) num.textContent = q.number;
+    else $("q-illustration").innerHTML = getIllustration(q, true);
+  }
+
   function choose(i) {
     if (state.answered) return;
     state.answered = true;
     const q = state.questions[state.index];
+    revealNumber(q);
+    if (q.wiki && q.hidePhotoUntilAnswered) showPhoto(q);
     const correct = i === q.answer;
     if (correct) state.score++;
 

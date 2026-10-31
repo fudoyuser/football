@@ -96,6 +96,38 @@ h1 { margin: 8px 0 8px; font-size: 1.6rem; text-align: center; color: var(--red-
 .q-illustration { width: 120px; margin: 0 auto 10px; }
 .q-illustration svg { width: 100%; height: auto; display: block; }
 
+.q-illustration.has-photo { width: 100%; }
+.photo-card { margin: 0; display: flex; flex-direction: column; align-items: center; animation: fade .3s ease; }
+.photo-card__frame {
+  position: relative;
+  width: 150px; aspect-ratio: 4 / 5;
+  border: 3px solid var(--red); border-radius: 14px;
+  background: var(--red-soft);
+}
+.photo-card__frame--gk { border-color: #1E7F4F; }
+.photo-card__frame img {
+  width: 100%; height: 100%; display: block;
+  object-fit: cover; object-position: 50% 15%;
+  border-radius: 11px;
+}
+.photo-card__num {
+  position: absolute; left: -10px; bottom: -10px;
+  min-width: 40px; height: 40px; padding: 0 6px;
+  display: grid; place-items: center;
+  background: var(--red); color: #fff; border: 2px solid #fff; border-radius: 10px;
+  font: 900 1.2rem/1 "Arial Black", Arial, sans-serif;
+  box-shadow: 0 2px 6px rgba(0,0,0,.2);
+}
+.photo-card__frame--gk .photo-card__num { background: #1E7F4F; }
+.photo-card__pos { position: absolute; right: -10px; bottom: -10px; width: 34px; height: 34px; }
+.photo-card__pos svg { width: 100%; height: 100%; display: block; }
+.photo-card figcaption {
+  margin-top: 16px; max-width: 280px;
+  font-size: .7rem; line-height: 1.3; color: var(--muted); text-align: center;
+  overflow-wrap: anywhere;
+}
+.photo-card figcaption a { color: var(--muted); }
+
 .q-tag {
   display: table; margin: 0 auto 6px;
   font-size: .75rem; font-weight: 700; letter-spacing: .5px; text-transform: uppercase;

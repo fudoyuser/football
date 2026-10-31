@@ -102,12 +102,14 @@ const POSITION_BADGES = {
 };
 
 // Card silhouette cầu thủ: áo đỏ, số áo to giữa ngực, badge vị trí góc dưới phải.
-function playerCard(pos, number) {
+// Số áo hiện "?" cho tới khi trả lời, vì phần lớn câu hỏi chính là hỏi số áo.
+function playerCard(pos, number, revealed) {
+  const shown = revealed ? number : "?";
   const badge = POSITION_BADGES[pos];
   const isGk = pos === "gk";
   const shirt = isGk ? "#1E7F4F" : RED; // thủ môn mặc áo khác màu cho dễ phân biệt
   const shirtDark = isGk ? "#145C38" : DARK;
-  return `<svg viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${badge.label}, áo số ${number}">
+  return `<svg viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${badge.label}, áo số ${shown}">
     <defs>
       <linearGradient id="bg-${pos}" x1="0" y1="0" x2="0" y2="1">
         <stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#FBE3E7"/>
@@ -121,8 +123,8 @@ function playerCard(pos, number) {
     <path d="M38 48 L22 58 L14 80 L28 86 L34 72 L34 124 L86 124 L86 72 L92 86 L106 80 L98 58 L82 48 Q60 58 38 48 Z"
           fill="${shirt}" stroke="${shirtDark}" stroke-width="2" stroke-linejoin="round"/>
     <path d="M48 50 Q60 58 72 50" fill="none" stroke="#fff" stroke-width="2.5"/>
-    <text x="60" y="104" text-anchor="middle" font-size="${number >= 10 ? 34 : 38}" font-weight="900"
-          fill="#fff" font-family="Arial Black, Arial, sans-serif">${number}</text>
+    <text x="60" y="104" text-anchor="middle" font-size="${shown >= 10 ? 34 : 38}" font-weight="900"
+          fill="#fff" font-family="Arial Black, Arial, sans-serif">${shown}</text>
     <!-- badge vị trí -->
     <g transform="translate(84 104)">
       <circle cx="14" cy="14" r="15" fill="${shirtDark}" stroke="#fff" stroke-width="2"/>
@@ -131,9 +133,17 @@ function playerCard(pos, number) {
   </svg>`;
 }
 
-function getIllustration(q) {
+// Badge vị trí đứng riêng (dùng chồng lên ảnh cầu thủ)
+function positionBadge(pos, dark = DARK) {
+  return `<svg viewBox="-1 -1 30 30" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <circle cx="14" cy="14" r="14" fill="${pos === "gk" ? "#145C38" : dark}" stroke="#fff" stroke-width="2"/>
+    ${POSITION_BADGES[pos].path}
+  </svg>`;
+}
+
+function getIllustration(q, revealed = false) {
   if (q.iconType.startsWith("player-")) {
-    return playerCard(q.iconType.slice(7), q.number);
+    return playerCard(q.iconType.slice(7), q.number, revealed);
   }
   return HISTORY_ICONS[q.iconType] || HISTORY_ICONS.crest;
 }
