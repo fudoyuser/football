@@ -6,7 +6,7 @@
     history: "Lịch sử & Huyền thoại", player: "Đội hình 2026/27", photo: "Nhìn ảnh đoán tên", origin: "Quốc tịch & CLB cũ",
   };
   const ORIGIN_ROUND = 20; // số câu mỗi lượt chơi "Quốc tịch & CLB cũ"
-  const MIXED_ROUND = { history: 8, player: 8, photo: 7, origin: 7 }; // cơ cấu 30 câu "Tổng hợp"
+  const TOPICS = ["history", "player", "photo", "origin"];
 
   const state = { mode: "all", questions: [], index: 0, score: 0, answered: false };
 
@@ -39,7 +39,7 @@
   }
 
   function buildRound(mode) {
-    if (mode === "all") return Object.entries(MIXED_ROUND).flatMap(([cat, n]) => shuffle(bank(cat)).slice(0, n));
+    if (mode === "all") return TOPICS.flatMap(bank); // Tổng hợp: toàn bộ câu hỏi của mọi chủ đề
     if (mode === "origin") return shuffle(bank("origin")).slice(0, ORIGIN_ROUND);
     return bank(mode);
   }
@@ -186,9 +186,9 @@
   const label = (mode, text) => (document.querySelector(`[data-mode="${mode}"] span`).textContent = text);
   ["history", "player", "photo"].forEach((cat) => label(cat, `${bank(cat).length} câu`));
   label("origin", `${ORIGIN_ROUND} câu ngẫu nhiên`);
-  const mixedTotal = Object.values(MIXED_ROUND).reduce((a, b) => a + b, 0);
-  label("all", `${mixedTotal} câu ngẫu nhiên`);
-  $("total-count").textContent = ["history", "player", "photo", "origin"].reduce((n, cat) => n + bank(cat).length, 0);
+  const total = TOPICS.reduce((n, cat) => n + bank(cat).length, 0);
+  label("all", `Tất cả ${total} câu`);
+  $("total-count").textContent = total;
 
   $("hero-icon").innerHTML = HISTORY_ICONS.crest;
 })();

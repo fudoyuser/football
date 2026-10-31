@@ -3,7 +3,7 @@
 Website quiz tương tác về Liverpool FC — hơn 130 câu hỏi về **lịch sử & huyền thoại**, **đội hình 2026/27** (số áo, vị trí), **nhìn ảnh đoán tên** và **quốc tịch & CLB cũ**.
 
 ## Tính năng
-- 5 chế độ: Lịch sử & Huyền thoại, Đội hình 2026/27, Nhìn ảnh đoán tên, Quốc tịch & CLB cũ (20 câu ngẫu nhiên), Tổng hợp (30 câu trộn từ cả 4 chủ đề)
+- 5 chế độ: Lịch sử & Huyền thoại, Đội hình 2026/27, Nhìn ảnh đoán tên, Quốc tịch & CLB cũ (20 câu ngẫu nhiên), Tổng hợp (toàn bộ câu hỏi của cả 4 chủ đề)
 - Câu ảnh / quốc tịch / CLB cũ được sinh tự động từ dữ liệu đội hình (`players.js`), đáp án nhiễu thay đổi mỗi lượt
 - Thứ tự câu hỏi và 4 đáp án được xáo trộn mỗi lần chơi
 - Hiện ngay đúng/sai kèm giải thích, progress bar, màn hình kết quả
