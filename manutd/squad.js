@@ -24,7 +24,7 @@ const PLAYERS = [
   { slug: "ugarte", name: "Manuel Ugarte", number: 25, group: "mf", position: "Tiền vệ phòng ngự", nationality: "Uruguay", from: "Paris Saint-Germain" },
   { slug: "mainoo", name: "Kobbie Mainoo", number: 37, group: "mf", position: "Tiền vệ trung tâm", nationality: "Anh", from: null },
   { slug: "j-fletcher", name: "Jack Fletcher", number: 38, group: "mf", position: "Tiền vệ trung tâm", nationality: null, from: null },
-  { slug: "t-fletcher", name: "Tyler Fletcher", number: 39, group: "mf", position: "Tiền vệ trung tâm", nationality: null, from: null },
+  { slug: "t-fletcher", name: "Tyler Fletcher", number: 39, group: "mf", position: "Tiền vệ trung tâm", nationality: "Scotland", from: null },
   { slug: "collyer", name: "Toby Collyer", number: 43, group: "mf", position: "Tiền vệ phòng ngự", nationality: "Anh", from: null },
   { slug: "cunha", name: "Matheus Cunha", number: 10, group: "fw", position: "Tiền đạo / Tiền vệ tấn công", nationality: "Brazil", from: "Wolverhampton" },
   { slug: "zirkzee", name: "Joshua Zirkzee", number: 11, group: "fw", position: "Tiền đạo cắm", nationality: "Hà Lan", from: "Bologna" },
@@ -36,4 +36,26 @@ const PLAYERS = [
 
 // Ảnh trong images/players/, cắt từ ảnh giấy phép tự do trên Wikimedia Commons (xem CREDITS.md).
 const PLAYER_PHOTOS = {
+  "lammens": {"artist": "Bryan Berlin", "license": "CC BY-SA 4.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0", "source": "https://commons.wikimedia.org/wiki/File:Senne_Lammens_USMNT_v_Belgium_Mar_28_2026-98_(cropped).jpg"},
+  "darlow": {"artist": "Timmy96", "license": "CC0", "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en", "source": "https://commons.wikimedia.org/wiki/File:Karl_Darlow_13092025_(2).jpg"},
+  "heaton": {"artist": "Ardfern", "license": "CC BY-SA 4.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0", "source": "https://commons.wikimedia.org/wiki/File:Tom_Heaton_2021.jpg"},
+  "dalot": {"artist": "Ardfern", "license": "CC BY-SA 4.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0", "source": "https://commons.wikimedia.org/wiki/File:Diogo_Dalot_2022_(cropped).jpg"},
+  "mazraoui": {"artist": "Nawfel Ajari", "license": "CC BY-SA 4.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0", "source": "https://commons.wikimedia.org/wiki/File:Mazraoui.jpg"},
+  "de-ligt": {"artist": "Femke Kruize", "license": "CC BY-SA 2.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0", "source": "https://commons.wikimedia.org/wiki/File:Matthijs_de_Ligt.jpg"},
+  "maguire": {"artist": "UK Prime Minister", "license": "CC BY 2.0", "licenseUrl": "https://creativecommons.org/licenses/by/2.0", "source": "https://commons.wikimedia.org/wiki/File:Harry_Maguire_2023_(cropped).jpg"},
+  "martinez": {"artist": "Ardfern", "license": "CC BY-SA 4.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0", "source": "https://commons.wikimedia.org/wiki/File:Lisandro_Mart%C3%ADnez_Manchester_United_v_Brighton_%26_Hove_Albion,_7_August_2022_(05)_(cropped).jpg"},
+  "yoro": {"artist": "Supporterhéninois", "license": "CC0", "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en", "source": "https://commons.wikimedia.org/wiki/File:Leny_Yoro_(08-10-2023)_12_(cropped).jpg"},
+  "shaw": {"artist": "Ardfern", "license": "CC BY-SA 4.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0", "source": "https://commons.wikimedia.org/wiki/File:Luke_Shaw,_Manchester_United_v_Newcastle_United,_11_September_2021_(44)_(cropped).jpg"},
+  "amass": {"artist": "Timmy96", "license": "CC0", "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en", "source": "https://commons.wikimedia.org/wiki/File:Harry_Amass_18102025_(4)_(cropped).jpg"},
+  "fernandes": {"artist": "Bryan Berlin", "license": "CC BY-SA 4.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0", "source": "https://commons.wikimedia.org/wiki/File:Bruno_Fernandes_Croatia_v_Portugal_2_July_2026-081.jpg"},
+  "santos": {"artist": "Paté kroute", "license": "CC0", "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en", "source": "https://commons.wikimedia.org/wiki/File:Santos_asse_rcsa_2425.jpg"},
+  "tielemans": {"artist": "Bryan Berlin", "license": "CC BY-SA 4.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0", "source": "https://commons.wikimedia.org/wiki/File:Youri_Tielemans_Belgium_v_USA_6_July_2026-254.jpg"},
+  "baleba": {"artist": "Timmy96", "license": "CC0", "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en", "source": "https://commons.wikimedia.org/wiki/File:Carlos_Baleba_24012026_(2).jpg"},
+  "ugarte": {"artist": "Atmedia25", "license": "CC BY 4.0", "licenseUrl": "https://creativecommons.org/licenses/by/4.0", "source": "https://commons.wikimedia.org/wiki/File:M.UGARTE.jpg"},
+  "mainoo": {"artist": "Bryan Berlin", "license": "CC BY-SA 4.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0", "source": "https://commons.wikimedia.org/wiki/File:Kobbie_Mainoo_England_v_Ghana_23_June_2026-042.jpg"},
+  "t-fletcher": {"artist": "Bryan Berlin", "license": "CC BY-SA 4.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0", "source": "https://commons.wikimedia.org/wiki/File:Tyler_Fletcher_Scotland_v_Bolivia_6_June_2026-4.jpg"},
+  "cunha": {"artist": "Bryan Berlin", "license": "CC BY-SA 4.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0", "source": "https://commons.wikimedia.org/wiki/File:Matheus_Cunha_Brazil_V_Morocco_13_June_2026-178_(cropped).jpg"},
+  "zirkzee": {"artist": "Sven Mandel", "license": "CC BY-SA 4.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0", "source": "https://commons.wikimedia.org/wiki/File:Joshua_Zirkzee_2019.jpg"},
+  "amad": {"artist": "Bryan Berlin", "license": "CC BY-SA 4.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0", "source": "https://commons.wikimedia.org/wiki/File:Amad_Diallo_Cote_D%27Ivoire_v_Ecuador_14_June_2026-256_(cropped).jpg"},
+  "mbeumo": {"artist": "ESTAC Troyes", "license": "CC BY 3.0", "licenseUrl": "https://creativecommons.org/licenses/by/3.0", "source": "https://commons.wikimedia.org/wiki/File:Bryan_Mbeumo_2018.jpg"}
 };
