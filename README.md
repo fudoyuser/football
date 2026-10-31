@@ -1,38 +1,41 @@
-# Liverpool FC Quiz ❤️
+# Football Quiz ⚽
 
-Website quiz tương tác về Liverpool FC — hơn 130 câu hỏi về **lịch sử & huyền thoại**, **đội hình 2026/27** (số áo, vị trí), **nhìn ảnh đoán tên** và **quốc tịch & CLB cũ**.
+Website quiz bóng đá tương tác — chọn đội rồi thử sức với lịch sử, huyền thoại và đội hình hiện tại.
+
+**Các đội hiện có**
+- **Liverpool FC** (`liverpool/`)
+- **Manchester United** (`manutd/`)
 
 ## Tính năng
-- 5 chế độ: Lịch sử & Huyền thoại, Đội hình 2026/27, Nhìn ảnh đoán tên, Quốc tịch & CLB cũ (20 câu ngẫu nhiên), Tổng hợp (toàn bộ câu hỏi của cả 4 chủ đề)
-- Câu ảnh / quốc tịch / CLB cũ được sinh tự động từ dữ liệu đội hình (`players.js`), đáp án nhiễu thay đổi mỗi lượt
-- Thứ tự câu hỏi và 4 đáp án được xáo trộn mỗi lần chơi
-- Hiện ngay đúng/sai kèm giải thích, progress bar, màn hình kết quả
-- Câu lịch sử minh họa bằng icon SVG tự vẽ
-- Câu cầu thủ hiển thị ảnh cầu thủ lưu sẵn trong repo (`images/players/`, cắt từ ảnh giấy phép tự do trên Wikimedia Commons, ghi tác giả + giấy phép dưới mỗi ảnh — xem [CREDITS.md](CREDITS.md)); nếu ảnh lỗi sẽ dùng card silhouette SVG. Số áo chỉ hiện sau khi trả lời để không lộ đáp án
-- Responsive, hỗ trợ phím tắt (1–4 / A–D để chọn, Enter để sang câu)
+- Mỗi đội có 5 chế độ: Lịch sử & Huyền thoại, Đội hình 2026/27 (số áo & vị trí), Nhìn ảnh đoán tên, Quốc tịch & CLB cũ (20 câu ngẫu nhiên), Tổng hợp (toàn bộ câu hỏi)
+- Câu ảnh / quốc tịch / CLB cũ được sinh tự động từ dữ liệu đội hình, đáp án nhiễu thay đổi mỗi lượt
+- Thứ tự câu hỏi và 4 đáp án được xáo trộn mỗi lần chơi; hiện ngay đúng/sai kèm giải thích
+- Ảnh cầu thủ lưu trong repo, cắt từ ảnh giấy phép tự do trên Wikimedia Commons, ghi tác giả + giấy phép dưới mỗi ảnh; cầu thủ chưa có ảnh dùng card silhouette SVG. Số áo / vị trí chỉ hiện sau khi trả lời nếu câu hỏi đang hỏi chính thông tin đó
+- Icon lịch sử vẽ bằng SVG, tô theo màu từng đội
+- Responsive, phím tắt 1–4 / A–D để chọn, Enter để sang câu
 
 ## Công nghệ
 HTML + CSS + JavaScript thuần, không framework, không build step — deploy trực tiếp bằng GitHub Pages.
 
 ## Cấu trúc
-| File | Nội dung |
+| Đường dẫn | Nội dung |
 |---|---|
-| `index.html` | Bố cục 3 màn hình: trang chủ, quiz, kết quả |
-| `style.css` | Giao diện theme đỏ-trắng (#C8102E) |
-| `questions.js` | Câu hỏi viết tay (lịch sử, huyền thoại, số áo, vị trí) |
-| `players.js` | Dữ liệu đội hình + sinh câu hỏi tự động |
-| `icons.js` | Icon SVG lịch sử + card cầu thủ |
-| `photos.js` | Thông tin bản quyền + hiển thị ảnh cầu thủ |
-| `images/players/` | 15 ảnh cầu thủ 400×500 |
-| `CREDITS.md` | Nguồn, tác giả, giấy phép từng ảnh |
-| `app.js` | Logic quiz |
+| `index.html` | Trang chọn đội |
+| `shared/` | Code dùng chung: `style.css`, `icons.js`, `photos.js`, `players.js` (sinh câu hỏi), `app.js` (logic quiz) |
+| `<đội>/index.html` | Trang quiz của đội |
+| `<đội>/team.js` | Màu sắc, tên gọi, chi tiết icon của đội |
+| `<đội>/squad.js` | Đội hình (số áo, vị trí, quốc tịch, CLB cũ) + nguồn ảnh |
+| `<đội>/questions.js` | Câu hỏi viết tay |
+| `<đội>/images/players/`, `<đội>/CREDITS.md` | Ảnh cầu thủ và nguồn/giấy phép |
+
+## Thêm đội mới
+Sao chép một thư mục đội (vd. `manutd/`), sửa `team.js`, `squad.js`, `questions.js` và chữ trong `index.html`, rồi thêm thẻ đội vào `index.html` ở thư mục gốc.
 
 ## Chạy local
-Mở `index.html` bằng trình duyệt, hoặc:
 ```bash
 python3 -m http.server 8000
 ```
 
-> Ảnh cầu thủ thuộc về các tác giả tương ứng, sử dụng theo giấy phép ghi trong [CREDITS.md](CREDITS.md).
+> Ảnh cầu thủ thuộc về các tác giả tương ứng, sử dụng theo giấy phép ghi trong `CREDITS.md` của từng đội.
 >
-> Dự án fan-made, không liên kết chính thức với Liverpool FC.
+> Dự án fan-made, không liên kết chính thức với các CLB.

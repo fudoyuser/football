@@ -3,95 +3,52 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Liverpool FC Quiz</title>
-  <meta name="description" content="Quiz tương tác về lịch sử, danh hiệu và cầu thủ Liverpool FC.">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M15 10h70v40q0 35-35 45Q15 85 15 50z' fill='%23C8102E'/></svg>">
-  <link rel="stylesheet" href="style.css">
+  <title>Football Quiz</title>
+  <meta name="description" content="Quiz bóng đá tương tác: chọn đội bóng và thử sức với lịch sử, huyền thoại, đội hình hiện tại.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23fff' stroke='%23222' stroke-width='6'/><path d='M50 25l15 11-6 18H41l-6-18z' fill='%23222'/></svg>">
+  <link rel="stylesheet" href="shared/style.css">
+  <style>
+    :root { --topbar: #1D1D1F; }
+    .teams { display: grid; gap: 14px; margin-top: 8px; }
+    .team-card {
+      display: flex; align-items: center; gap: 16px;
+      padding: 16px 18px; border-radius: 14px; text-decoration: none; color: #fff;
+      background: var(--team); box-shadow: 0 6px 18px rgba(0,0,0,.12);
+      transition: transform .12s, box-shadow .12s;
+    }
+    .team-card:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0,0,0,.18); }
+    .team-card svg { width: 54px; height: 64px; flex: none; }
+    .team-card strong { display: block; font-size: 1.15rem; }
+    .team-card span { font-size: .9rem; opacity: .85; }
+    .team-card--soon { background: #fff; color: var(--muted); border: 2px dashed var(--border); box-shadow: none; pointer-events: none; }
+  </style>
 </head>
 <body>
   <header class="topbar">
-    <span class="topbar__crest" aria-hidden="true"></span>
-    <span class="topbar__title">Liverpool FC Quiz</span>
+    <span class="topbar__title">⚽ Football Quiz</span>
   </header>
 
   <main class="container">
-    <!-- Trang chủ -->
-    <section id="screen-home" class="screen card">
-      <div class="hero-icon" id="hero-icon"></div>
-      <h1>Bạn hiểu The Reds đến đâu?</h1>
-      <p class="lead">Ngân hàng <span id="total-count">150</span> câu hỏi về lịch sử, huyền thoại và đội hình hiện tại của Liverpool FC. Mỗi câu có giải thích ngay sau khi trả lời.</p>
-      <div class="modes">
-        <button class="mode-btn" data-mode="history">
-          <strong>Lịch sử &amp; Huyền thoại</strong>
-          <span>25 câu</span>
-        </button>
-        <button class="mode-btn" data-mode="player">
-          <strong>Đội hình 2026/27: số áo &amp; vị trí</strong>
-          <span>32 câu</span>
-        </button>
-        <button class="mode-btn" data-mode="photo">
-          <strong>Nhìn ảnh đoán tên</strong>
-          <span>20 câu</span>
-        </button>
-        <button class="mode-btn" data-mode="origin">
-          <strong>Quốc tịch &amp; CLB cũ</strong>
-          <span>20 câu ngẫu nhiên</span>
-        </button>
-        <button class="mode-btn mode-btn--primary" data-mode="all">
-          <strong>Tổng hợp</strong>
-          <span>Tất cả 134 câu</span>
-        </button>
-      </div>
-      <p class="footnote">YNWA ❤️</p>
-    </section>
-
-    <!-- Màn hình quiz -->
-    <section id="screen-quiz" class="screen card" hidden>
-      <div class="quiz-head">
-        <span id="progress-text">Câu 1/30</span>
-        <span id="score-text">Điểm: 0</span>
-      </div>
-      <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100">
-        <div class="progress__bar" id="progress-bar"></div>
-      </div>
-      <div class="q-illustration" id="q-illustration"></div>
-      <p class="q-position" id="q-position" hidden></p>
-      <span class="q-tag" id="q-tag"></span>
-      <h2 class="q-text" id="q-text"></h2>
-      <div class="options" id="options"></div>
-      <div class="feedback" id="feedback" hidden>
-        <p class="feedback__verdict" id="feedback-verdict"></p>
-        <p class="feedback__explain" id="feedback-explain"></p>
-      </div>
-      <div class="quiz-actions">
-        <button class="link-btn" id="btn-quit">← Về trang chủ</button>
-        <button class="btn" id="btn-next" hidden>Câu tiếp theo →</button>
-      </div>
-    </section>
-
-    <!-- Màn hình kết quả -->
-    <section id="screen-result" class="screen card" hidden>
-      <div class="hero-icon" id="result-icon"></div>
-      <h1>Kết quả</h1>
-      <p class="score-big"><span id="result-score">0</span><small>/<span id="result-total">30</span></small></p>
-      <p class="result-msg" id="result-msg"></p>
-      <div class="stats">
-        <div class="stat stat--ok"><strong id="result-correct">0</strong><span>Câu đúng</span></div>
-        <div class="stat stat--bad"><strong id="result-wrong">0</strong><span>Câu sai</span></div>
-      </div>
-      <div class="result-actions">
-        <button class="btn" id="btn-retry">Làm lại</button>
-        <button class="btn btn--ghost" id="btn-home">Chọn chủ đề khác</button>
+    <section class="card">
+      <h1 style="color: var(--text)">Chọn đội bóng</h1>
+      <p class="lead">Mỗi đội có các chủ đề: lịch sử &amp; huyền thoại, đội hình 2026/27, nhìn ảnh đoán tên, quốc tịch &amp; CLB cũ.</p>
+      <div class="teams">
+        <a class="team-card" href="liverpool/" style="--team: #C8102E">
+          <svg viewBox="0 0 60 70" aria-hidden="true"><path d="M5 4h50v30q0 24-25 33Q5 58 5 34z" fill="#fff"/><path d="M19 32q4-10 12-7 6-4 10 0-5 1-6 5 3 7-4 14-6 3-10-1 5-3 4-7z" fill="#C8102E"/></svg>
+          <div><strong>Liverpool FC</strong><span>The Reds · Anfield</span></div>
+        </a>
+        <a class="team-card" href="manutd/" style="--team: #DA291C">
+          <svg viewBox="0 0 60 70" aria-hidden="true"><path d="M5 4h50v30q0 24-25 33Q5 58 5 34z" fill="#1A1A1A"/><path d="M30 18v38M20 20v8q0 7 10 7t10-7v-8" fill="none" stroke="#FBE122" stroke-width="4" stroke-linecap="round"/><path d="M20 14l-3 7h6zM30 11l-4 8h8zM40 14l-3 7h6z" fill="#FBE122"/></svg>
+          <div><strong>Manchester United</strong><span>Quỷ đỏ · Old Trafford</span></div>
+        </a>
+        <div class="team-card team-card--soon">
+          <svg viewBox="0 0 60 70" aria-hidden="true"><path d="M5 4h50v30q0 24-25 33Q5 58 5 34z" fill="none" stroke="#ccc" stroke-width="3" stroke-dasharray="5 4"/><text x="30" y="42" text-anchor="middle" font-size="22" fill="#bbb" font-family="sans-serif">?</text></svg>
+          <div><strong>Sắp có thêm đội khác</strong><span>Đang cập nhật…</span></div>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">Dự án fan-made, không liên kết chính thức với Liverpool FC.</footer>
-
-  <script src="questions.js"></script>
-  <script src="icons.js"></script>
-  <script src="photos.js"></script>
-  <script src="players.js"></script>
-  <script src="app.js"></script>
+  <footer class="site-footer">Dự án fan-made, không liên kết chính thức với các CLB.</footer>
 </body>
 </html>

@@ -159,10 +159,10 @@
     $("result-correct").textContent = state.score;
     $("result-wrong").textContent = total - state.score;
     $("result-msg").textContent =
-      pct === 1 ? "Hoàn hảo! Bạn là một Kopite thực thụ. YNWA!" :
+      pct === 1 ? TEAM.perfectMessage :
       pct >= 0.8 ? "Xuất sắc! Kiến thức của bạn đáng nể." :
       pct >= 0.5 ? "Khá tốt! Thêm chút nữa là thành chuyên gia." :
-      "Cố lên! Làm lại để hiểu thêm về The Reds nhé.";
+      `Cố lên! Làm lại để hiểu thêm về ${TEAM.nickname} nhé.`;
     $("result-icon").innerHTML = HISTORY_ICONS[pct >= 0.5 ? "trophy" : "crest"];
     show("result");
   }
@@ -185,6 +185,8 @@
   // Số câu mỗi chủ đề lấy từ ngân hàng câu hỏi
   const label = (mode, text) => (document.querySelector(`[data-mode="${mode}"] span`).textContent = text);
   ["history", "player", "photo"].forEach((cat) => label(cat, `${bank(cat).length} câu`));
+  // Ẩn chủ đề chưa có câu hỏi (vd. đội chưa có ảnh cầu thủ nào)
+  TOPICS.forEach((cat) => (document.querySelector(`[data-mode="${cat}"]`).hidden = bank(cat).length === 0));
   label("origin", `${ORIGIN_ROUND} câu ngẫu nhiên`);
   const total = TOPICS.reduce((n, cat) => n + bank(cat).length, 0);
   label("all", `Tất cả ${total} câu`);

@@ -1,7 +1,8 @@
-// Icon SVG tự vẽ, phong cách flat/line-art đỏ-trắng. Không dùng ảnh ngoài.
-const RED = "#C8102E";
-const DARK = "#8A0B20";
-const GOLD = "#F6C343";
+// Icon SVG tự vẽ, phong cách flat/line-art theo màu của đội (TEAM trong team.js). Không dùng ảnh ngoài.
+const RED = TEAM.colors.primary;
+const DARK = TEAM.colors.dark;
+const GOLD = TEAM.colors.accent;
+const ICON = TEAM.icons;
 
 const svg = (body) =>
   `<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
@@ -34,7 +35,7 @@ const HISTORY_ICONS = {
 
   rivalry: svg(`
     <path d="M24 36 L54 36 L54 60 Q54 78 39 86 Q24 78 24 60 Z" fill="${RED}"/>
-    <path d="M66 36 L96 36 L96 60 Q96 78 81 86 Q66 78 66 60 Z" fill="#1B3F94"/>
+    <path d="M66 36 L96 36 L96 60 Q96 78 81 86 Q66 78 66 60 Z" fill="${ICON.rivalColor}"/>
     <path d="M56 50 L64 58 M64 50 L56 58" stroke="#333" stroke-width="3" stroke-linecap="round"/>
     <text x="60" y="104" text-anchor="middle" font-size="11" font-weight="700" fill="#333" font-family="sans-serif">DERBY</text>`),
 
@@ -44,15 +45,20 @@ const HISTORY_ICONS = {
       <circle cx="${x + 6}" cy="${i % 2 ? 56 : 52}" r="7" fill="${RED}"/>
       <path d="M${x - 2} 76 Q${x + 6} ${i % 2 ? 60 : 56} ${x + 14} 76 Z" fill="${RED}"/>`).join("")}
     <path d="M24 46 L20 30 M96 46 L100 30" stroke="${RED}" stroke-width="4" stroke-linecap="round"/>
-    <rect x="44" y="20" width="32" height="14" rx="3" fill="#fff" stroke="${RED}" stroke-width="2"/>
-    <text x="60" y="31" text-anchor="middle" font-size="10" font-weight="800" fill="${RED}" font-family="sans-serif">KOP</text>`),
+    <rect x="${60 - Math.max(16, ICON.standLabel.length * 3.6)}" y="20" width="${2 * Math.max(16, ICON.standLabel.length * 3.6)}" height="14" rx="3" fill="#fff" stroke="${RED}" stroke-width="2"/>
+    <text x="60" y="31" text-anchor="middle" font-size="${ICON.standLabel.length > 4 ? 7.5 : 10}" font-weight="800" fill="${RED}" font-family="sans-serif">${ICON.standLabel}</text>`),
 
   crest: svg(`
     <path d="M30 22 L90 22 L90 62 Q90 90 60 102 Q30 90 30 62 Z" fill="${RED}" stroke="${DARK}" stroke-width="2"/>
     <path d="M30 22 L90 22 L90 62 Q90 90 60 102 Q30 90 30 62 Z" fill="none" stroke="#fff" stroke-width="2" transform="translate(60 62) scale(.86) translate(-60 -62)"/>
+    ${ICON.crest === "trident" ? `
+    <!-- Đinh ba cách điệu -->
+    <path d="M60 38 L60 88" stroke="${GOLD}" stroke-width="5" stroke-linecap="round"/>
+    <path d="M44 40 L44 52 Q44 62 60 62 Q76 62 76 52 L76 40" fill="none" stroke="${GOLD}" stroke-width="5" stroke-linecap="round"/>
+    <path d="M44 34 L40 44 L48 44 Z M60 30 L55 42 L65 42 Z M76 34 L72 44 L80 44 Z" fill="${GOLD}"/>` : `
     <!-- Chim cách điệu -->
     <path d="M46 54 Q52 40 64 44 Q72 38 78 44 Q70 46 68 52 Q72 62 62 72 Q54 76 48 70 Q56 66 54 60 Z" fill="${GOLD}"/>
-    <path d="M78 44 L84 46 L78 48 Z" fill="${GOLD}"/>`),
+    <path d="M78 44 L84 46 L78 48 Z" fill="${GOLD}"/>`}`),
 
   trophy: svg(`
     <path d="M40 26 L80 26 L78 54 Q76 70 60 72 Q44 70 42 54 Z" fill="${GOLD}" stroke="#B8860B" stroke-width="2"/>
@@ -76,18 +82,25 @@ const HISTORY_ICONS = {
     <path d="M76 30 Q98 28 96 48 Q92 62 74 58" fill="none" stroke="#999" stroke-width="5"/>
     <rect x="55" y="76" width="10" height="8" fill="#999"/>
     <rect x="42" y="84" width="36" height="12" rx="2" fill="${RED}"/>
-    <text x="60" y="94" text-anchor="middle" font-size="10" font-weight="800" fill="#fff" font-family="sans-serif">×6</text>`),
+    <text x="60" y="94" text-anchor="middle" font-size="10" font-weight="800" fill="#fff" font-family="sans-serif">×${ICON.euroCups}</text>`),
 
   legend: svg(`
     <path d="M42 40 L32 45 L24 58 L33 64 L37 59 L37 94 L83 94 L83 59 L87 64 L96 58 L88 45 L78 40 Q60 50 42 40 Z" fill="${RED}" stroke="${DARK}" stroke-width="2" stroke-linejoin="round"/>
     <path d="M60 14 L64.5 24 L75 25 L67 32 L69.5 42 L60 37 L50.5 42 L53 32 L45 25 L55.5 24 Z" fill="${GOLD}" stroke="#B8860B" stroke-width="1.5"/>
-    <text x="60" y="84" text-anchor="middle" font-size="24" font-weight="900" fill="#fff" font-family="Arial Black, Arial, sans-serif">LFC</text>`),
+    <text x="60" y="84" text-anchor="middle" font-size="24" font-weight="900" fill="#fff" font-family="Arial Black, Arial, sans-serif">${TEAM.short}</text>`),
+
+  clock: svg(`
+    <circle cx="60" cy="54" r="30" fill="#fff" stroke="${DARK}" stroke-width="5"/>
+    <path d="M60 54 L60 34 M60 54 L74 60" stroke="${DARK}" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="60" cy="54" r="3" fill="${RED}"/>
+    <rect x="34" y="88" width="52" height="14" rx="3" fill="${RED}"/>
+    <text x="60" y="98.5" text-anchor="middle" font-size="9" font-weight="800" fill="#fff" font-family="sans-serif">${ICON.clockLabel || ""}</text>`),
 
   comeback: svg(`
-    <text x="60" y="52" text-anchor="middle" font-size="22" font-weight="800" fill="#999" font-family="sans-serif">0–3</text>
+    <text x="60" y="52" text-anchor="middle" font-size="22" font-weight="800" fill="#999" font-family="sans-serif">${ICON.comeback[0]}</text>
     <path d="M36 62 Q60 80 84 62" fill="none" stroke="${RED}" stroke-width="4" stroke-linecap="round"/>
     <path d="M84 62 L76 62 M84 62 L82 70" stroke="${RED}" stroke-width="4" stroke-linecap="round"/>
-    <text x="60" y="98" text-anchor="middle" font-size="22" font-weight="800" fill="${RED}" font-family="sans-serif">3–3</text>`),
+    <text x="60" y="98" text-anchor="middle" font-size="22" font-weight="800" fill="${RED}" font-family="sans-serif">${ICON.comeback[1]}</text>`),
 };
 
 // Icon nhỏ thể hiện vị trí (vẽ trong ô 28x28)

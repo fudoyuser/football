@@ -11,6 +11,7 @@
   --card: #FFFFFF;
   --border: #E6DCDD;
   --radius: 16px;
+  --topbar: var(--red);
 }
 
 * { box-sizing: border-box; }
@@ -29,7 +30,7 @@ body {
 button { font: inherit; cursor: pointer; }
 
 .topbar {
-  background: var(--red);
+  background: var(--topbar);
   color: #fff;
   display: flex;
   align-items: center;
@@ -42,6 +43,8 @@ button { font: inherit; cursor: pointer; }
   background: #fff;
   clip-path: polygon(0 0, 100% 0, 100% 55%, 50% 100%, 0 55%);
 }
+.topbar__back { color: #fff; text-decoration: none; font-size: 1.2rem; line-height: 1; padding: 0 4px 2px 0; opacity: .85; }
+.topbar__back:hover { opacity: 1; }
 .topbar__title { font-weight: 800; letter-spacing: .5px; font-size: 1.1rem; }
 
 .container {
@@ -81,6 +84,7 @@ h1 { margin: 8px 0 8px; font-size: 1.6rem; text-align: center; color: var(--red-
   border-radius: 12px;
   transition: background .15s, transform .1s;
 }
+.mode-btn[hidden] { display: none; }
 .mode-btn span { font-size: .9rem; color: var(--muted); white-space: nowrap; }
 .mode-btn:hover { background: var(--red-soft); }
 .mode-btn:active { transform: scale(.98); }
