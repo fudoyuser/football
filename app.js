@@ -2,7 +2,11 @@
   const $ = (id) => document.getElementById(id);
   const screens = { home: $("screen-home"), quiz: $("screen-quiz"), result: $("screen-result") };
   const KEYS = ["A", "B", "C", "D"];
-  const CATEGORY_LABEL = { history: "Lịch sử & Danh hiệu", player: "Cầu thủ 2026/27" };
+  const CATEGORY_LABEL = {
+    history: "Lịch sử & Huyền thoại", player: "Đội hình 2026/27", photo: "Nhìn ảnh đoán tên", origin: "Quốc tịch & CLB cũ",
+  };
+  const ORIGIN_ROUND = 20; // số câu mỗi lượt chơi "Quốc tịch & CLB cũ"
+  const MIXED_ROUND = { history: 8, player: 8, photo: 7, origin: 7 }; // cơ cấu 30 câu "Tổng hợp"
 
   const state = { mode: "all", questions: [], index: 0, score: 0, answered: false };
 
@@ -27,10 +31,22 @@
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
+  // Ngân hàng câu theo chủ đề; câu ảnh/quốc tịch/CLB được sinh lại mỗi lượt để đáp án nhiễu thay đổi
+  function bank(cat) {
+    if (cat === "photo") return photoQuestions();
+    if (cat === "origin") return originQuestions();
+    return QUESTIONS.filter((q) => q.category === cat);
+  }
+
+  function buildRound(mode) {
+    if (mode === "all") return Object.entries(MIXED_ROUND).flatMap(([cat, n]) => shuffle(bank(cat)).slice(0, n));
+    if (mode === "origin") return shuffle(bank("origin")).slice(0, ORIGIN_ROUND);
+    return bank(mode);
+  }
+
   function start(mode) {
     state.mode = mode;
-    const pool = mode === "all" ? QUESTIONS : QUESTIONS.filter((q) => q.category === mode);
-    state.questions = shuffle(pool).map(prepareQuestion);
+    state.questions = shuffle(buildRound(mode)).map(prepareQuestion);
     state.questions.forEach((q) => hasPhoto(q) && preloadPlayerPhoto(q.photo)); // tải trước ảnh cầu thủ
     state.index = 0;
     state.score = 0;
@@ -167,11 +183,12 @@
   });
 
   // Số câu mỗi chủ đề lấy từ ngân hàng câu hỏi
-  const count = (cat) => QUESTIONS.filter((q) => q.category === cat).length;
-  document.querySelector('[data-mode="history"] span').textContent = `${count("history")} câu`;
-  document.querySelector('[data-mode="player"] span').textContent = `${count("player")} câu`;
-  document.querySelector('[data-mode="all"] span').textContent = `Tất cả ${QUESTIONS.length} câu`;
-  $("total-count").textContent = QUESTIONS.length;
+  const label = (mode, text) => (document.querySelector(`[data-mode="${mode}"] span`).textContent = text);
+  ["history", "player", "photo"].forEach((cat) => label(cat, `${bank(cat).length} câu`));
+  label("origin", `${ORIGIN_ROUND} câu ngẫu nhiên`);
+  const mixedTotal = Object.values(MIXED_ROUND).reduce((a, b) => a + b, 0);
+  label("all", `${mixedTotal} câu ngẫu nhiên`);
+  $("total-count").textContent = ["history", "player", "photo", "origin"].reduce((n, cat) => n + bank(cat).length, 0);
 
   $("hero-icon").innerHTML = HISTORY_ICONS.crest;
 })();

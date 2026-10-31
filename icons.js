@@ -78,6 +78,11 @@ const HISTORY_ICONS = {
     <rect x="42" y="84" width="36" height="12" rx="2" fill="${RED}"/>
     <text x="60" y="94" text-anchor="middle" font-size="10" font-weight="800" fill="#fff" font-family="sans-serif">×6</text>`),
 
+  legend: svg(`
+    <path d="M42 40 L32 45 L24 58 L33 64 L37 59 L37 94 L83 94 L83 59 L87 64 L96 58 L88 45 L78 40 Q60 50 42 40 Z" fill="${RED}" stroke="${DARK}" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M60 14 L64.5 24 L75 25 L67 32 L69.5 42 L60 37 L50.5 42 L53 32 L45 25 L55.5 24 Z" fill="${GOLD}" stroke="#B8860B" stroke-width="1.5"/>
+    <text x="60" y="84" text-anchor="middle" font-size="24" font-weight="900" fill="#fff" font-family="Arial Black, Arial, sans-serif">LFC</text>`),
+
   comeback: svg(`
     <text x="60" y="52" text-anchor="middle" font-size="22" font-weight="800" fill="#999" font-family="sans-serif">0–3</text>
     <path d="M36 62 Q60 80 84 62" fill="none" stroke="${RED}" stroke-width="4" stroke-linecap="round"/>

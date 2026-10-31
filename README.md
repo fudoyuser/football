@@ -1,9 +1,10 @@
 # Liverpool FC Quiz ❤️
 
-Website quiz tương tác về Liverpool FC — 30 câu hỏi về **lịch sử & danh hiệu** và **cầu thủ mùa 2026/27**.
+Website quiz tương tác về Liverpool FC — hơn 130 câu hỏi về **lịch sử & huyền thoại**, **đội hình 2026/27** (số áo, vị trí), **nhìn ảnh đoán tên** và **quốc tịch & CLB cũ**.
 
 ## Tính năng
-- 3 chế độ: Tổng hợp (30 câu), Chỉ lịch sử (15 câu), Chỉ cầu thủ (15 câu)
+- 5 chế độ: Lịch sử & Huyền thoại, Đội hình 2026/27, Nhìn ảnh đoán tên, Quốc tịch & CLB cũ (20 câu ngẫu nhiên), Tổng hợp (30 câu trộn từ cả 4 chủ đề)
+- Câu ảnh / quốc tịch / CLB cũ được sinh tự động từ dữ liệu đội hình (`players.js`), đáp án nhiễu thay đổi mỗi lượt
 - Thứ tự câu hỏi và 4 đáp án được xáo trộn mỗi lần chơi
 - Hiện ngay đúng/sai kèm giải thích, progress bar, màn hình kết quả
 - Câu lịch sử minh họa bằng icon SVG tự vẽ
@@ -18,7 +19,8 @@ HTML + CSS + JavaScript thuần, không framework, không build step — deploy 
 |---|---|
 | `index.html` | Bố cục 3 màn hình: trang chủ, quiz, kết quả |
 | `style.css` | Giao diện theme đỏ-trắng (#C8102E) |
-| `questions.js` | Ngân hàng 30 câu hỏi |
+| `questions.js` | Câu hỏi viết tay (lịch sử, huyền thoại, số áo, vị trí) |
+| `players.js` | Dữ liệu đội hình + sinh câu hỏi tự động |
 | `icons.js` | Icon SVG lịch sử + card cầu thủ |
 | `photos.js` | Thông tin bản quyền + hiển thị ảnh cầu thủ |
 | `images/players/` | 15 ảnh cầu thủ 400×500 |
