@@ -25,3 +25,9 @@
 | `jaros.jpg` | Vítězslav Jaroš | Timmy96 | [CC0](https://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Vítězslav Jaroš 06042025 (1) (cropped).jpg](https://commons.wikimedia.org/wiki/File:V%C3%ADt%C4%9Bzslav_Jaro%C5%A1_06042025_(1)_(cropped).jpg) |
 | `davies.jpg` | Harvey Davies | Timmy96 | [CC0](https://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Harvey Davies 06042025 (1).jpg](https://commons.wikimedia.org/wiki/File:Harvey_Davies_06042025_(1).jpg) |
 | `gomez.jpg` | Joe Gomez | Timmy96 | [CC0](https://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Joe Gomez 04012026 (1).jpg](https://commons.wikimedia.org/wiki/File:Joe_Gomez_04012026_(1).jpg) |
+| `bradley.jpg` | Conor Bradley | Timmy96 | [CC0](https://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Conor Bradley 04012026 (1).jpg](https://commons.wikimedia.org/wiki/File:Conor_Bradley_04012026_(1).jpg) |
+| `tsimikas.jpg` | Kostas Tsimikas | Timmy96 | [CC0](https://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Kostas Tsimikas 06042025 (1).jpg](https://commons.wikimedia.org/wiki/File:Kostas_Tsimikas_06042025_(1).jpg) |
+| `elliott.jpg` | Harvey Elliott | Timmy96 | [CC0](https://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Harvey Elliott 06042025 (1).jpg](https://commons.wikimedia.org/wiki/File:Harvey_Elliott_06042025_(1).jpg) |
+| `nyoni.jpg` | Trey Nyoni | Timmy96 | [CC0](https://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Trey Nyoni 04012026 (1).jpg](https://commons.wikimedia.org/wiki/File:Trey_Nyoni_04012026_(1).jpg) |
+| `gakpo.jpg` | Cody Gakpo | Timmy96 | [CC0](https://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Cody Gakpo 06042025 (2).jpg](https://commons.wikimedia.org/wiki/File:Cody_Gakpo_06042025_(2).jpg) |
+| `ngumoha.jpg` | Rio Ngumoha | Timmy96 | [CC0](https://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Rio Ngumoha 04012026 (1).jpg](https://commons.wikimedia.org/wiki/File:Rio_Ngumoha_04012026_(1).jpg) |

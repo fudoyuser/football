@@ -56,5 +56,11 @@ const PLAYER_PHOTOS = {
   "woodman": {"artist": "Timmy96", "license": "CC0", "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en", "source": "https://commons.wikimedia.org/wiki/File:Freddie_Woodman_04012026_(1).jpg"},
   "jaros": {"artist": "Timmy96", "license": "CC0", "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en", "source": "https://commons.wikimedia.org/wiki/File:V%C3%ADt%C4%9Bzslav_Jaro%C5%A1_06042025_(1)_(cropped).jpg"},
   "davies": {"artist": "Timmy96", "license": "CC0", "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en", "source": "https://commons.wikimedia.org/wiki/File:Harvey_Davies_06042025_(1).jpg"},
-  "gomez": {"artist": "Timmy96", "license": "CC0", "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en", "source": "https://commons.wikimedia.org/wiki/File:Joe_Gomez_04012026_(1).jpg"}
+  "gomez": {"artist": "Timmy96", "license": "CC0", "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en", "source": "https://commons.wikimedia.org/wiki/File:Joe_Gomez_04012026_(1).jpg"},
+  "bradley": {"artist": "Timmy96", "license": "CC0", "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en", "source": "https://commons.wikimedia.org/wiki/File:Conor_Bradley_04012026_(1).jpg"},
+  "tsimikas": {"artist": "Timmy96", "license": "CC0", "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en", "source": "https://commons.wikimedia.org/wiki/File:Kostas_Tsimikas_06042025_(1).jpg"},
+  "elliott": {"artist": "Timmy96", "license": "CC0", "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en", "source": "https://commons.wikimedia.org/wiki/File:Harvey_Elliott_06042025_(1).jpg"},
+  "nyoni": {"artist": "Timmy96", "license": "CC0", "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en", "source": "https://commons.wikimedia.org/wiki/File:Trey_Nyoni_04012026_(1).jpg"},
+  "gakpo": {"artist": "Timmy96", "license": "CC0", "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en", "source": "https://commons.wikimedia.org/wiki/File:Cody_Gakpo_06042025_(2).jpg"},
+  "ngumoha": {"artist": "Timmy96", "license": "CC0", "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en", "source": "https://commons.wikimedia.org/wiki/File:Rio_Ngumoha_04012026_(1).jpg"}
 };
